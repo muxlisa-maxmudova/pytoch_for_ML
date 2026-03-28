@@ -1,9 +1,19 @@
 import torch
 x = torch.tensor([2.0], requires_grad=True)
-y = x**2 + 5  # y = 2^2 + 5 = 9
-
-# Calculate the derivative (dy/dx)
+y = x**2
+learning_rate = 0.1
 y.backward()
+# the update state
+with torch.no_grad():
+    x-=learning_rate * x.grad
+print(x)
 
-# The gradient is stored in x.grad
-print(x.grad) # Output: 4.0 (Because d/dx of x^2 is 2x, and 2*2=4)
+
+
+
+
+
+
+
+
+
